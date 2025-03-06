@@ -146,17 +146,17 @@ var examples = [
     ;; Instruction ;; Stack       ;; Explanation
     i32.const 0    ;; [0]         ;; push an i32 with value 0
     beginfm        ;; []          ;; pop x:i32; create a new global FunMacro x
-    copy           ;; []          ;; 
+    i32.const 1    ;; []          ;; 
     i32.add        ;; []          ;; 
     endfm          ;; []          ;; end of body of FunMacro x
 
     i32.const 2    ;; [2]         ;; push an i32 with value 2
     i32.const 0    ;; [0 2]       ;; push an i32 with value 0
+    callfm         ;; [3]         ;; pop x:i32; execute body of FunMacro x
+    i32.const 0    ;; [0 3]       ;; push an i32 with value 0
     callfm         ;; [4]         ;; pop x:i32; execute body of FunMacro x
     i32.const 0    ;; [0 4]       ;; push an i32 with value 0
-    callfm         ;; [8]         ;; pop x:i32; execute body of FunMacro x
-    i32.const 0    ;; [0 8]       ;; push an i32 with value 0
-    callfm         ;; [16]        ;; pop x:i32; execute body of FunMacro x
+    callfm         ;; [5]        ;; pop x:i32; execute body of FunMacro x
     return
   ))
 `,
